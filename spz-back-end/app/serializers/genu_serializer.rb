@@ -1,4 +1,4 @@
-class GenuSerializer < ActiveModel::Serializer
-    attributes :id, :name
+class GenusSerializer < ActiveModel::Serializer
+    attributes :name
     has_many :species
-end
+end    

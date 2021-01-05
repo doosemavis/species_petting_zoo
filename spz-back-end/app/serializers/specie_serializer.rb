@@ -1,4 +1,4 @@
-class SpecieSerializer < ActiveModel::Serializer
+class SpeciesSerializer < ActiveModel::Serializer
     attributes :id, :name, :age
     belongs_to :genu
-end
+end 

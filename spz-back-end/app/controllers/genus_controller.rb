@@ -46,6 +46,6 @@ class GenusController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def genu_params
-      params.require(:genu).permit(:name)
+      params.fetch(:genu, {})
     end
 end

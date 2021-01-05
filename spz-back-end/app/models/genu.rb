@@ -1,3 +1,3 @@
 class Genu < ApplicationRecord
-    has_many :species
+    has_many :sepcies
 end
