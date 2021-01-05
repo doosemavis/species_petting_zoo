@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_05_201051) do
+ActiveRecord::Schema.define(version: 2021_01_05_205652) do
 
-  create_table "genus", force: :cascade do |t|
+  create_table "animals", force: :cascade do |t|
     t.string "name"
+    t.integer "age"
+    t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "species", force: :cascade do |t|
+  create_table "categories", force: :cascade do |t|
     t.string "name"
-    t.integer "age"
-    t.integer "genu_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
