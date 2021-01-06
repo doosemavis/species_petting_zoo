@@ -27,6 +27,7 @@ function clearForm() {
 
 function createCategory(e) {
     e.preventDefault()
+    let main = document.getElementById('main')
     let category = {
         name: e.target.querySelector("#category").value
     }
@@ -38,7 +39,18 @@ function createCategory(e) {
             'Accept': 'application/json'
         }
     }
-    fetch(BASE_URL = '/categories', configObj)
+    fetch(BASE_URL + '/categories', configObj)
+    .then(res => res.json())
+    .then(category => {
+        main.innerHTML += `
+        <li>
+        <a href="#" data-id="${category.id}">${category.name}</a>
+        </li>
+        `
+        attachClicksToLinks()
+        clearForm()
+        }
+    )
 }
 
 function getCategories() {
