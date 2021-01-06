@@ -11,8 +11,12 @@ class Category {
         <h3>${this.name}</h3>
         <hr>
         <br>
-        <p>${this.animals}</p>
         `
-        // category.animals.forEach()
+        main.innerHTML += this.animals.map(animal => 
+            `
+            <h4> Species: ${animal.name}</h4>
+            <p> Laymans Name: ${animal.layman}
+            ` 
+        ).join("") 
     }
 }
