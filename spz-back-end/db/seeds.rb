@@ -7,11 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+cat = Category.create(name: 'Felis')
+dog = Category.create(name: 'Canis')
+horse = Category.create(name: 'Equus')
 
-
-# Category.create(name: 'Felis')
-# Category.create(name: 'Canis')
-# Category.create(name: 'Equus')
-
-# Animal.create(name: 'catus', layman: 'Domestic Cat', age: 5, extinct: 'false')
-# Animal.create(name: 'silvestris' age: nil, layman: 'European Wildcat', extinct: 'nil' )
+cat.animals.create(name: 'catus', layman: 'Domestic Cat', age: 5, extinct: false)
+cat.animals.create(name: 'silvestris', layman: 'European Wildcat', age: nil, extinct: false )
