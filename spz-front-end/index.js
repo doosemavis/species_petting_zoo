@@ -22,11 +22,25 @@ function getCategories() {
 
 function attachClicksToLinks() {
     let categories = document.querySelectorAll("li a")
-    categories.forEach(todo => {
+    categories.forEach(category => {
         category.addEventListener('click', displayCategory)
     })
 }
 
 function displayCategory(e) {
-    console(e.target)
+    console.log(e.target)
+    let id = e.target.dataset.id
+    let main = document.getElementById('main')
+    main.innerHTML += ""
+    fetch(BASE_URL + `/categories/${id}`)
+    .then(resp => resp.json())
+    .then(category => {
+        main.innerHTML = `
+        <h3>${category.name}</h3>
+        <hr>
+        <br>
+        <p>${category.name}</p>
+        `
+    })
 }
+
