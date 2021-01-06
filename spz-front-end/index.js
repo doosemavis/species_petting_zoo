@@ -20,12 +20,33 @@ function displayCreateForm() {
     document.querySelector('form').addEventListener('submit', createCategory)
 }
 
+function clearForm() {
+    let formDiv = document.querySelector("#new-category-form")
+    formDiv.innerHTML = ""
+}
+
+function createCategory(e) {
+    e.preventDefault()
+    let category = {
+        name: e.target.querySelector("#category").value
+    }
+    let configObj = {
+        method: 'POST',
+        body: JSON.stringify(category),
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    }
+    fetch(BASE_URL = '/categories', configObj)
+}
 
 function getCategories() {
     let main = document.getElementById('main')
     main.innerHTML = ''
-    fetch(BASE_URL + '/categories')
-    .then(res => res.json())
+    // fetch(BASE_URL + '/categories')
+    // .then(res => res.json())
+    fetchCategories()
     .then(categories => {categories.map(category => {
         main.innerHTML += `
         <li>
@@ -37,6 +58,15 @@ function getCategories() {
     })
 }
 
+async function fetchCategories() {
+    let res = await fetch(BASE_URL + '/categories')
+    let data = await res.json()
+    return data;
+}
+
+
+
+
 function attachClicksToLinks() {
     let categories = document.querySelectorAll("li a")
     categories.forEach(category => {
@@ -45,7 +75,6 @@ function attachClicksToLinks() {
 }
 
 function displayCategory(e) {
-    console.log(e.target)
     let id = e.target.dataset.id
     let main = document.getElementById('main')
     main.innerHTML += ""
