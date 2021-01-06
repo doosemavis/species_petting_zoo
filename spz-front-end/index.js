@@ -1,8 +1,25 @@
 const BASE_URL = 'http://localhost:3000'
 
 window.addEventListener("DOMContentLoaded", () => {
+    document.getElementById('category-form').addEventListener('click', displayCreateForm)
+    document.getElementById('categories').addEventListener('click', getCategories)
     getCategories()
 })
+
+
+function displayCreateForm() {
+    let formDiv = document.querySelector("#new-category-form")
+    let html = `
+        <form>
+            <label>Genus:</label>
+            <input type="text" id="category">
+            <input type="submit">
+        </form>
+    `
+    formDiv.innerHTML = html
+    document.querySelector('form').addEventListener('submit', createCategory)
+}
+
 
 function getCategories() {
     let main = document.getElementById('main')
@@ -39,6 +56,13 @@ function displayCategory(e) {
         category.renderCategory()
     })
 }
+
+
+
+
+
+
+
 
 // class Category {
 //     constructor(data) {

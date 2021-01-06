@@ -13,6 +13,6 @@ class Category {
         <br>
         <p>${this.animals}</p>
         `
-        category.animals.forEach
+        // category.animals.forEach()
     }
 }
