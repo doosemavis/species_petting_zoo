@@ -6,16 +6,27 @@ window.addEventListener("DOMContentLoaded", () => {
 
 function getCategories() {
     let main = docucment.getElementById('main')
+    main.innerHTML = ''
     fetch(BASE_URL + '/categories')
     .then(res => res.json())
-    .then(categories => category.map(category => {
-        console.log(categories)
+    .then(categories => {categories.map(category => {
         main.innerHTML += `
-        
+        <li>
+        <a href="#" data-id="${category.id}">${category.name}</a>
+        </li>
         `
-    }
+        })
+        attachClicksToLinks()
+    })
 }
 
-<li>
-    <a href="#" data-id="${}"></a>
-</li>
+function attachClicksToLinks() {
+    let categories = document.querySelectorAll("li a")
+    categories.forEach(todo => {
+        category.addEventListener('click', displayCategory)
+    })
+}
+
+function displayCategory(e) {
+    console(e.target)
+}
