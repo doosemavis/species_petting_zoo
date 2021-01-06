@@ -41,6 +41,7 @@ function displayCategory(e) {
         <br>
         <p>${category.name}</p>
         `
+        // category.animals.forEach
     })
 }
 
