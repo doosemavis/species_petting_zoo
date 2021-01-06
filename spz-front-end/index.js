@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", () => {
 })
 
 function getCategories() {
-    let main = docucment.getElementById('main')
+    let main = document.getElementById('main')
     main.innerHTML = ''
     fetch(BASE_URL + '/categories')
     .then(res => res.json())
@@ -34,14 +34,27 @@ function displayCategory(e) {
     main.innerHTML += ""
     fetch(BASE_URL + `/categories/${id}`)
     .then(resp => resp.json())
-    .then(category => {
-        main.innerHTML = `
-        <h3>${category.name}</h3>
-        <hr>
-        <br>
-        <p>${category.name}</p>
-        `
-        // category.animals.forEach
+    .then(data => {
+        let category = new Category(data)
+        category.renderCategory()
     })
 }
 
+// class Category {
+//     constructor(data) {
+//         this.id = data.id;
+//         this.name = data.name;
+//         this.animals = data.animals; 
+//     }
+
+//     renderCategory() {
+//         let main = document.getElementById('main')
+//         main.innerHTML = `
+//         <h3>${this.name}</h3>
+//         <hr>
+//         <br>
+//         <p>${this.animals}</p>
+//         `
+//         category.animals.forEach
+//     }
+// }
