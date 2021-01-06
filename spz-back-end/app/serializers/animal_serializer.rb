@@ -1,4 +1,4 @@
 class AnimalSerializer < ActiveModel::Serializer
-    attributes :id, :name, :age
+    attributes :id, :name, :layman, :age, :extinct
     belongs_to :category
 end 

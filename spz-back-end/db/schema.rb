@@ -14,7 +14,9 @@ ActiveRecord::Schema.define(version: 2021_01_05_205652) do
 
   create_table "animals", force: :cascade do |t|
     t.string "name"
+    t.string "layman"
     t.integer "age"
+    t.boolean "extinct"
     t.integer "category_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
