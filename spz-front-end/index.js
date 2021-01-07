@@ -76,9 +76,6 @@ async function fetchCategories() {
     return data;
 }
 
-
-
-
 function attachClicksToLinks() {
     let categories = document.querySelectorAll("li a")
     categories.forEach(category => {
@@ -97,29 +94,3 @@ function displayCategory(e) {
         category.renderCategory()
     })
 }
-
-
-
-
-
-
-
-
-// class Category {
-//     constructor(data) {
-//         this.id = data.id;
-//         this.name = data.name;
-//         this.animals = data.animals; 
-//     }
-
-//     renderCategory() {
-//         let main = document.getElementById('main')
-//         main.innerHTML = `
-//         <h3>${this.name}</h3>
-//         <hr>
-//         <br>
-//         <p>${this.animals}</p>
-//         `
-//         category.animals.forEach
-//     }
-// }

@@ -8,14 +8,14 @@ class Category {
     renderCategory() {
         let main = document.getElementById('main')
         main.innerHTML = `
-        <h3>${this.name}</h3>
+        <h3> Genus: ${this.name}</h3>
         <hr>
         <br>
         `
         main.innerHTML += this.animals.map(animal => 
             `
             <h4> Species: ${animal.name}</h4>
-            <p> Laymans Name: ${animal.layman}
+            <li>Laymans Name: ${animal.layman}</li>
             ` 
         ).join("") 
     }
