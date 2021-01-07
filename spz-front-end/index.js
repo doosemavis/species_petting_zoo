@@ -122,7 +122,7 @@ function displayCreateAnimalForm() {
 function attachClicksToBtn() {
     let animals = document.querySelectorAll("li a")
     animals.forEach(animal => {
-        animal.addEventListener('click', )
+        animal.addEventListener('click', displayAnimal)
     })
 }
 
@@ -150,14 +150,29 @@ function createAnimal(e) {
         </li>
         `
         attachClicksToBtn()
-        // clearForm()
+        clearAnimalForm()
         }
     )
 }
 
+function clearAnimalForm() {
+    let formDiv = document.querySelector("#new-animal-form")
+    formDiv.innerHTML = ""
+}
 
 
-
+function displayAnimal(e) {
+    let id = e.target.dataset.id
+    let main = document.getElementById('main')
+    main.innerHTML += ""
+    fetch(BASE_URL + `/categories/${id}`)
+    .then(resp => resp.json())
+    .then(data => {
+        let animal = new Animal(data)
+        animal.renderAnimal()
+        // document.getElementById('animal-form').addEventListener('click', displayCreateAnimalForm)
+    })
+}
 
 
 
