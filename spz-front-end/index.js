@@ -183,7 +183,7 @@ function displayAnimal(e) {
     .then(data => {
         let animal = new Animal(data)
         animal.renderAnimal()
-        // document.getElementById('animal-form').addEventListener('click', displayCreateAnimalForm)
+        document.getElementById('delete-animal', removeAnimal)
     })
 }
 
