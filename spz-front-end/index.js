@@ -43,7 +43,8 @@ function createCategory(e) {
     fetch(BASE_URL + '/categories', configObj)
     .then(res => res.json())
     .then(category => {
-        main.innerHTML += `
+        main.innerHTML += 
+        `
         <li>
         <a href="#" data-id="${category.id}">${category.name}</a>
         </li>
@@ -92,7 +93,7 @@ function displayCategory(e) {
     .then(data => {
         let category = new Category(data)
         category.renderCategory()
-        document.getElementById('animal-form').addEventListener('click', displayCreateAnimalForm)
+        document.getElementById('animal-form').addEventListener('click', () => displayCreateAnimalForm(category.id))
     })
 }
 
@@ -102,10 +103,10 @@ function displayCategory(e) {
 
 
 
-function displayCreateAnimalForm() {
+function displayCreateAnimalForm(categoryId) {
     let formDiv = document.querySelector("#new-animal-form")
     let html = `
-        <form>
+        <form data-id="${categoryId}">
             <label>Species:</label>
             <input type="text" id="animal">
             <br>
@@ -142,7 +143,11 @@ function createAnimal(e) {
     e.preventDefault()
     let main = document.getElementById('main')
     let animal = {
-        name: e.target.querySelector("#animal").value
+        name: e.target.querySelector("#animal").value,
+        layman: e.target.querySelector("#layman").value,
+        age: e.target.querySelector("#age").value,
+        extinct: e.target.querySelector("#extinct").value,
+        category_id: e.target.dataset.id
     }
     let configObj = {
         method: 'POST',
@@ -152,7 +157,7 @@ function createAnimal(e) {
             'Accept': 'application/json'
         }
     }
-    fetch(BASE_URL + '/categories', configObj)
+    fetch(BASE_URL + '/animals', configObj)
     .then(res => res.json())
     .then(animal => {
         main.innerHTML += `
@@ -183,4 +188,14 @@ function displayAnimal(e) {
 }
 
 
-
+function removeAnimal(event) {
+    let configObj = {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        }
+    }
+    fetch(BASE_URL + `/animals/${event.target.dataset.id}`, configObj)
+    .then(displayAnimal)
+}
