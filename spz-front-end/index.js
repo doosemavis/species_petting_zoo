@@ -75,6 +75,7 @@ async function fetchCategories() {
     return data;
 }
 
+
 function attachClicksToLinks() {
     let categories = document.querySelectorAll("li a")
     categories.forEach(category => {
@@ -94,6 +95,11 @@ function displayCategory(e) {
         document.getElementById('animal-form').addEventListener('click', displayCreateAnimalForm)
     })
 }
+
+
+
+// =============================================================================================== 
+
 
 
 function displayCreateAnimalForm() {
@@ -117,6 +123,11 @@ function displayCreateAnimalForm() {
     `
     formDiv.innerHTML = html
     document.querySelector('form').addEventListener('submit', createAnimal)
+}
+
+function clearAnimalForm() {
+    let formDiv = document.querySelector("#new-animal-form")
+    formDiv.innerHTML = ""
 }
 
 function attachClicksToBtn() {
@@ -145,19 +156,16 @@ function createAnimal(e) {
     .then(res => res.json())
     .then(animal => {
         main.innerHTML += `
-        <li>
-        <a href="#" data-id="${animal.id}">${animal.name}</a>
-        </li>
-        `
+        <h4> Species: ${animal.name}</h4>
+        <ul>Laymans Name: ${animal.layman}</ul>
+        <ul>Age: ${animal.age}</ul>
+        <ul>Extinct: ${animal.extinct}</ul>
+        <br>
+        ` 
         attachClicksToBtn()
         clearAnimalForm()
         }
     )
-}
-
-function clearAnimalForm() {
-    let formDiv = document.querySelector("#new-animal-form")
-    formDiv.innerHTML = ""
 }
 
 
@@ -176,21 +184,3 @@ function displayAnimal(e) {
 
 
 
-
-
-
-
-// function displayCreateAnimalForm() {
-//     let formDiv = document.querySelector("#new-animal-form")
-//     let html = `
-//         <form>
-//             <label>Species:</label>
-//             <input type="text" id="animal">
-//             <input type="submit">
-//         </form>
-//     `
-//     formDiv.innerHTML = html
-//     document.querySelector('form').addEventListener('submit', createAnimal)
-// }
-
-// document.getElementById('animal-form').addEventListener('click', displayCreateAnimalForm)

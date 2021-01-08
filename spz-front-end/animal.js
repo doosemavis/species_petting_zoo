@@ -1,18 +1,14 @@
-class Category {
+class Animal {
     constructor(data) {
         this.id = data.id;
         this.name = data.name;
-        this.animals = data.animals; 
+        this.layman = data.layman;
+        this.age = data.age;
+        this.extinct = data.extinct; 
     }
 
-    renderCategory() {
+    renderAnimal() {
         let main = document.getElementById('main')
-        main.innerHTML = `
-        <h3> Genus: ${this.name}</h3>
-        <button id="animal-form" data-id="${this.id}">Add Species</button>
-        <hr>
-        <br>
-        `
         main.innerHTML += this.animals.map(animal => 
             `
             <h4> Species: ${animal.name}</h4>
@@ -24,4 +20,3 @@ class Category {
         ).join("") 
     }
 }
-
