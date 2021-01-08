@@ -19,7 +19,7 @@ class Category {
                 <ul>Laymans Name: ${animal.layman}</ul>
                 <ul>Age: ${animal.age}</ul>
                 <ul>Extinct: ${animal.extinct}</ul>
-                <button id="delete-animal" data-id="${animal.id}">Delete Species</button>
+                <button class="delete-animal" data-id="${animal.id}">Delete Species</button>
                 <br>
             </div>
             `

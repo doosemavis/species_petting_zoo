@@ -94,6 +94,7 @@ function displayCategory(e) {
         let category = new Category(data)
         category.renderCategory()
         document.getElementById('animal-form').addEventListener('click', () => displayCreateAnimalForm(category.id))
+        addEventsToDeleteBtns()
     })
 }
 
@@ -160,35 +161,40 @@ function createAnimal(e) {
     fetch(BASE_URL + '/animals', configObj)
     .then(res => res.json())
     .then(animal => {
-        main.innerHTML += `
-        <h4> Species: ${animal.name}</h4>
-        <ul>Laymans Name: ${animal.layman}</ul>
-        <ul>Age: ${animal.age}</ul>
-        <ul>Extinct: ${animal.extinct}</ul>
-        <br>
-        ` 
+        let newAnimal = new Animal(animal)
+        newAnimal.renderAnimal()
+        // main.innerHTML += `
+        // <h4> Species: ${animal.name}</h4>
+        // <ul>Laymans Name: ${animal.layman}</ul>
+        // <ul>Age: ${animal.age}</ul>
+        // <ul>Extinct: ${animal.extinct}</ul>
+        // <button class="delete-animal" data-id="${animal.id}">Delete Species</button>
+        // <br>
+        // ` 
         attachClicksToBtn()
         clearAnimalForm()
+        addEventsToDeleteBtns()
         }
     )
 }
 
 
-function displayAnimal(e) {
-    let id = e.target.dataset.id
-    let main = document.getElementById('main')
-    main.innerHTML += ""
-    fetch(BASE_URL + `/categories/${id}`)
-    .then(resp => resp.json())
-    .then(data => {
-        let animal = new Animal(data)
-        animal.renderAnimal()
-        document.getElementById('delete-animal', removeAnimal)
-    })
-}
+// function displayAnimal(e) {
+//     let id = e.target.dataset.id
+//     let main = document.getElementById('main')
+//     main.innerHTML += ""
+//     fetch(BASE_URL + `/categories/${id}`)
+//     .then(resp => resp.json())
+//     .then(data => {
+//         let animal = new Animal(data)
+//         animal.renderCategory()
+//         addEventsToDeleteBtns()
+//     })
+// }
 
 
-function removeAnimal(event) {
+function removeAnimal(e) {
+    let animalId = e.target.dataset.id
     let configObj = {
         method: 'DELETE',
         headers: {
@@ -196,6 +202,11 @@ function removeAnimal(event) {
             'Accept': 'application/json'
         }
     }
-    fetch(BASE_URL + `/animals/${event.target.dataset.id}`, configObj)
-    .then(displayAnimal)
+    fetch(BASE_URL + `/animals/${animalId}`, configObj)
+    getCategories() 
+}
+
+
+function addEventsToDeleteBtns() {
+    document.querySelectorAll('.delete-animal').forEach(btn => btn.addEventListener('click', removeAnimal))
 }
