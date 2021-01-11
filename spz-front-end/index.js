@@ -163,34 +163,12 @@ function createAnimal(e) {
     .then(animal => {
         let newAnimal = new Animal(animal)
         newAnimal.renderAnimal()
-        // main.innerHTML += `
-        // <h4> Species: ${animal.name}</h4>
-        // <ul>Laymans Name: ${animal.layman}</ul>
-        // <ul>Age: ${animal.age}</ul>
-        // <ul>Extinct: ${animal.extinct}</ul>
-        // <button class="delete-animal" data-id="${animal.id}">Delete Species</button>
-        // <br>
-        // ` 
         attachClicksToBtn()
         clearAnimalForm()
         addEventsToDeleteBtns()
         }
     )
 }
-
-
-// function displayAnimal(e) {
-//     let id = e.target.dataset.id
-//     let main = document.getElementById('main')
-//     main.innerHTML += ""
-//     fetch(BASE_URL + `/categories/${id}`)
-//     .then(resp => resp.json())
-//     .then(data => {
-//         let animal = new Animal(data)
-//         animal.renderCategory()
-//         addEventsToDeleteBtns()
-//     })
-// }
 
 
 function removeAnimal(e) {
