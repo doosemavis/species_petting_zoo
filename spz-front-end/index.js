@@ -108,10 +108,10 @@ function displayCreateAnimalForm(categoryId) {
     let formDiv = document.querySelector("#new-animal-form")
     let html = `
         <form data-id="${categoryId}">
-            <label>Species:</label>
+            <label>Species Name:</label>
             <input type="text" id="animal">
             <br>
-            <label>Laymans:</label>
+            <label>Common Name:</label>
             <input type="text" id="layman">
             <br>
             <label>Age:</label>
@@ -142,7 +142,6 @@ function attachClicksToBtn() {
 
 function createAnimal(e) {
     e.preventDefault()
-    let main = document.getElementById('main')
     let animal = {
         name: e.target.querySelector("#animal").value,
         layman: e.target.querySelector("#layman").value,
@@ -188,3 +187,4 @@ function removeAnimal(e) {
 function addEventsToDeleteBtns() {
     document.querySelectorAll('.delete-animal').forEach(btn => btn.addEventListener('click', removeAnimal))
 }
+
