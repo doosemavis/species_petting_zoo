@@ -169,7 +169,6 @@ function createAnimal(e) {
     )
 }
 
-
 function removeAnimal(e) {
     let animalId = e.target.dataset.id
     let configObj = {
@@ -183,8 +182,6 @@ function removeAnimal(e) {
     getCategories() 
 }
 
-
 function addEventsToDeleteBtns() {
     document.querySelectorAll('.delete-animal').forEach(btn => btn.addEventListener('click', removeAnimal))
 }
-

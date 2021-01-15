@@ -16,7 +16,7 @@ class Category {
         main.innerHTML += this.animals.map(animal => 
             `<div class="animal" id="${animal.id}">
                 <h4> Species: ${animal.name}</h4>
-                <ul>Laymans Name: ${animal.layman}</ul>
+                <ul>Common Name: ${animal.layman}</ul>
                 <ul>Age: ${animal.age}</ul>
                 <ul>Extinct: ${animal.extinct}</ul>
                 <button class="delete-animal" data-id="${animal.id}">Delete Species</button>
