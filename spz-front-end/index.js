@@ -59,6 +59,13 @@ function getCategories() {
     let main = document.getElementById('main')
     main.innerHTML = ''
     fetchCategories()
+    .then(categories => categories.sort(function(a, b) {
+        if (a.name < b.name)
+            return -1
+        if (a.name > b.name)
+            return 1
+        return 0
+    }))
     .then(categories => {categories.map(category => {
         main.innerHTML += `
         <li>
@@ -69,6 +76,8 @@ function getCategories() {
         attachClicksToLinks()
     })
 }
+
+
 
 async function fetchCategories() {
     let res = await fetch(BASE_URL + '/categories')

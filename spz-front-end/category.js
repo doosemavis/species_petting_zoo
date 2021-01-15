@@ -7,7 +7,8 @@ class Category {
 
     renderCategory() {
         let main = document.getElementById('main')
-        main.innerHTML = `
+        main.innerHTML = 
+        `
         <h3> Genus: ${this.name}</h3>
         <button id="animal-form" data-id="${this.id}">Add Species</button>
         <hr>
@@ -26,4 +27,3 @@ class Category {
         ).join("") 
     }
 }
-
